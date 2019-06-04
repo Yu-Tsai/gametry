@@ -35,33 +35,36 @@ $(document).ready(function () {
 
 
     $(window).on("orientationchange", function (event) {
-        /*if ($(window).height() > $(window).width()) {
-            $("#gamepage2").css({
-                "top": "100%",
-                "transform": "rotate(-90deg)",
-                "transform-origin": "0 0"
-            })
-        } else {
-            $("#gamepage2").css({
-                "top": 0,
-                "left": 0,
-                "transform": "",
-                "transform-origin": ""
-            })
-        }*/
-        if ($(window).height() > $(window).width()) {
-            $("#gamepage2").css({
-                "top": 0,
-                "left": 0,
-                "transform": "",
-                "transform-origin": ""
-            })
-        } else {
-            $("#gamepage2").css({
-                "top": "100%",
-                "transform": "rotate(-90deg)",
-                "transform-origin": "0 0"
-            })
+        if(event.orientation==portrait){
+            if ($(window).height() > $(window).width()) {
+                $("#gamepage2").css({
+                    "top": "100%",
+                    "transform": "rotate(-90deg)",
+                    "transform-origin": "0 0"
+                })
+            } else {
+                $("#gamepage2").css({
+                    "top": 0,
+                    "left": 0,
+                    "transform": "",
+                    "transform-origin": ""
+                })
+            }
+        }else{       
+            if ($(window).height() > $(window).width()) {
+                $("#gamepage2").css({
+                    "top": 0,
+                    "left": 0,
+                    "transform": "",
+                    "transform-origin": ""
+                })
+            } else {
+                $("#gamepage2").css({
+                    "top": "100%",
+                    "transform": "rotate(-90deg)",
+                    "transform-origin": "0 0"
+                })
+            }
         }
     });
 
