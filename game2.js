@@ -28,43 +28,21 @@ $(document).ready(function () {
         "left": w * 0.475
     })
 
-    /*$("#gamebase2").on('click', function () {
-        console.log($("#gamepage2").width());
-        console.log($("#gamepage2").height());
-    });*/
-
-
     $(window).on("orientationchange", function (event) {
-        if(event.orientation==portrait){
-            if ($(window).height() > $(window).width()) {
-                $("#gamepage2").css({
-                    "top": "100%",
-                    "transform": "rotate(-90deg)",
-                    "transform-origin": "0 0"
-                })
-            } else {
-                $("#gamepage2").css({
-                    "top": 0,
-                    "left": 0,
-                    "transform": "",
-                    "transform-origin": ""
-                })
-            }
-        }else{       
-            if ($(window).height() > $(window).width()) {
-                $("#gamepage2").css({
-                    "top": 0,
-                    "left": 0,
-                    "transform": "",
-                    "transform-origin": ""
-                })
-            } else {
-                $("#gamepage2").css({
-                    "top": "100%",
-                    "transform": "rotate(-90deg)",
-                    "transform-origin": "0 0"
-                })
-            }
+        console.log(event.orientation);
+        if (event.orientation == "landscape") {
+            $("#gamepage2").css({
+                "top": "100%",
+                "transform": "rotate(-90deg)",
+                "transform-origin": "0 0"
+            })
+        } else {
+            $("#gamepage2").css({
+                "top": 0,
+                "left": 0,
+                "transform": "",
+                "transform-origin": ""
+            })
         }
     });
 
