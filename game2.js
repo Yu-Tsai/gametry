@@ -1,45 +1,32 @@
-var w;
-var h;
-
-if ($(window).height() >= $(window).width()) {
-    w = $(window).width();
-    h = $(window).height();
-} else {
-    h = $(window).width();
-    w = $(window).height();
-}
-
 $(document).ready(function () {
+    var w;
+    var h;
 
-    (function () {
-        setInterval(function () {
-            if ($(window).height() >= $(window).width()) {
-                w = $(window).width();
-                h = $(window).height();
-            } else {
-                h = $(window).width();
-                w = $(window).height();
-            }
-            
-            $("#gamepage2").css({
-                "top": 0,
-                "left": 0,
-                "width": w,
-                "height": h
-            })
-            $("#circle").css({
-                "top": $("#circle").position().left,
-                "height": $("#circle").width()
-            })
-            $(".bullet").css({
-                "height": w * 0.3
-            })
-            $(".nowbullet").css({
-                "top": w * 1.2,
-                "left": w * 0.475
-            })
-        }, 500);
-    })();
+    if ($(window).height() >= $(window).width()) {
+        w = $(window).width();
+        h = $(window).height();
+    } else {
+        h = $(window).width();
+        w = $(window).height();
+    }
+
+    $("#gamepage2").css({
+        "top": 0,
+        "left": 0,
+        "width": w,
+        "height": h
+    })
+    $("#circle").css({
+        "top": $("#circle").position().left,
+        "height": $("#circle").width()
+    })
+    $(".bullet").css({
+        "height": w * 0.3
+    })
+    $(".nowbullet").css({
+        "top": w * 1.2,
+        "left": w * 0.475
+    })
 
     $(window).on("orientationchange", function (event) {
         console.log(event.orientation);
@@ -58,6 +45,42 @@ $(document).ready(function () {
             })
         }
     });
+
+    (function () {
+        /*setInterval(function () {
+            if ($(window).height() >= $(window).width()) {
+                w = $(window).width();
+                h = $(window).height();
+            } else {
+                h = $(window).width();
+                w = $(window).height();
+            }                                  
+        }, 500);*/
+        $(window).resize(function () {
+            if ($(window).height() >= $(window).width()) {
+                w = $(window).width();
+                h = $(window).height();
+            } else {
+                h = $(window).width();
+                w = $(window).height();
+            }
+
+            $("#gamepage2").css({
+                "width": w,
+                "height": h
+            })
+            $("#circle").css({
+                "top": $("#circle").position().left,
+                "height": $("#circle").width()
+            })
+            $(".bullet").css({
+                "height": w * 0.3
+            })
+            $(".nowbullet").css({
+                "left": w * 0.475
+            })
+        });
+    })();
 
     (function () {
         $(".nowbullet").stop().animate({ top: 0 }, 10000, 'linear');
