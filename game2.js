@@ -10,6 +10,19 @@ if ($(window).height() >= $(window).width()) {
 }
 
 $(document).ready(function () {
+
+    (function () {
+        setInterval(function () {
+            if ($(window).height() >= $(window).width()) {
+                w = $(window).width();
+                h = $(window).height();
+            } else {
+                h = $(window).width();
+                w = $(window).height();
+            }
+        }, 1000);
+    })();
+
     $("#gamepage2").css({
         "top": 0,
         "left": 0,
