@@ -11,9 +11,8 @@ $(document).ready(function () {
     var cirpos;
 
     function bulletrotate(num, bulletclass) {
-        console.log(-19 * w / h);
+        //console.log(-19 * w / h);
         shootbullet[num] = function () {
-            bulletcenter = -19 * w / h;
             $(bulletclass).rotate({
                 angle: 0,
                 animateTo: 360,
@@ -72,6 +71,7 @@ $(document).ready(function () {
         w = $(window).height();
     }
     cirpos = w * 0.3;
+    bulletcenter = -19 * w / h;
 
     $("#gamepage2").css({
         "top": 0,
@@ -123,6 +123,7 @@ $(document).ready(function () {
                 w = $(window).height();
             }
             cirpos = w * 0.3;
+            bulletcenter = -19 * w / h;
 
             $("#gamepage2").css({
                 "width": w,
