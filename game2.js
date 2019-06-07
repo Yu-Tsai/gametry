@@ -140,6 +140,9 @@ $(document).ready(function () {
             $(".nowbullet").css({
                 "left": w * 0.475
             })
+            $(".bulletoncir").css({
+                "top": w * 0.69
+            })
         });
     })();
 
