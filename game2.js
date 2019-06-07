@@ -11,7 +11,6 @@ $(document).ready(function () {
     var cirpos;
 
     function bulletrotate(num, bulletclass) {
-        //console.log(-19 * w / h);
         shootbullet[num] = function () {
             $(bulletclass).rotate({
                 angle: 0,
@@ -33,7 +32,7 @@ $(document).ready(function () {
                 $(".nowbullet").stop(true, false).animate({ top: "100%" }, 100, 'linear', function () {
                     $(".nowbullet").remove();
                 });
-                console.log(nowDeg[0]);
+                //console.log(nowDeg[0]);
                 safe = 0;
             }
         }
@@ -44,7 +43,8 @@ $(document).ready(function () {
             $(".nowbullet").removeClass("nowbullet");
             //clearInterval(touchcheck);
             $(".bulletoncir").css({
-                "top": w * 0.69
+                "top": w * 0.69,
+                "left": w * 0.475
             })
             var newclass = "#newbullet" + a;
             var newobject = $(newclass);
@@ -141,7 +141,8 @@ $(document).ready(function () {
                 "left": w * 0.475
             })
             $(".bulletoncir").css({
-                "top": w * 0.69
+                "top": w * 0.69,
+                "left": w * 0.475
             })
         });
     })();
