@@ -2,13 +2,12 @@ $(document).ready(function () {
     var w;
     var h;
     var nowDeg = 0;
-    var mybullet = new Array();
     var shootbullet = new Array();
     var occupyDeg = new Array();
     var touchheight;
     var num = 0;
-    var bulletcenter;
     var cirpos;
+    var touchcheck = null;
 
     function bulletrotate(num, bulletclass) {
         shootbullet[num] = function () {
@@ -32,7 +31,6 @@ $(document).ready(function () {
                 $(".nowbullet").stop(true, false).animate({ top: "100%" }, 100, 'linear', function () {
                     $(".nowbullet").remove();
                 });
-                //console.log(nowDeg[0]);
                 safe = 0;
             }
         }
@@ -41,7 +39,7 @@ $(document).ready(function () {
             $(".nowbullet").attr("id","newbullet" + a);
             $(".nowbullet").addClass("bulletoncir");
             $(".nowbullet").removeClass("nowbullet");
-            //clearInterval(touchcheck);
+            clearInterval(touchcheck);
             $(".bulletoncir").css({
                 "top": w * 0.69,
                 "left": w * 0.475
@@ -59,7 +57,6 @@ $(document).ready(function () {
             $(".bullet").css({
                 "height": w * 0.3
             })
-            console.log(occupyDeg);
         }
     }
 
@@ -71,7 +68,6 @@ $(document).ready(function () {
         w = $(window).height();
     }
     cirpos = w * 0.3;
-    bulletcenter = -19 * w / h;
 
     $("#gamepage2").css({
         "top": 0,
@@ -123,7 +119,6 @@ $(document).ready(function () {
                 w = $(window).height();
             }
             cirpos = w * 0.3;
-            bulletcenter = -19 * w / h;
 
             $("#gamepage2").css({
                 "width": w,
@@ -138,6 +133,7 @@ $(document).ready(function () {
                 "height": w * 0.3
             })
             $(".nowbullet").css({
+                "top": w * 1.2,
                 "left": w * 0.475
             })
             $(".bulletoncir").css({
@@ -167,12 +163,8 @@ $(document).ready(function () {
     })();
 
     $("#gamebase2").on('click', '.nowbullet', function () {
-        $(".nowbullet").stop().animate({ top: w * 0.69 }, 100, 'linear', function () {
-            shoot(num);
-            num++;
-        });
         touchheight = $("#gamebase2").width() * 0.99;
-        var touchcheck = setInterval(function () {
+        touchcheck = setInterval(function () {
             if (parseInt($(".nowbullet").css("top")) < touchheight) {
                 for (var i = 0; i < occupyDeg.length; i++) {
                     if ((nowDeg[0] < occupyDeg[i] + 3) && (nowDeg[0] > occupyDeg[i] - 3)) {
@@ -180,38 +172,13 @@ $(document).ready(function () {
                             $(".nowbullet").remove();
                         });
                         clearInterval(touchcheck);
-                        console.log(nowDeg[0]);
                     }
                 }
             }
         }, 0);
+        $(".nowbullet").stop().animate({ top: w * 0.69 }, 100, 'linear', function () {
+            shoot(num);
+            num++;
+        });
     });
 });
-
-
-
-
-/*(function () {
-        $(".nowbullet").stop().animate({ top: 0 }, 10000, 'linear');
-    })();*/
-
-
-
-
-/*$(window).on("orientationchange", function (event) {
-    console.log(event.orientation);
-    if (event.orientation == "landscape") {
-        $("#gamepage2").css({
-            "top": "100%",
-            "transform": "rotate(-90deg)",
-            "transform-origin": "0 0"
-        })
-    } else {
-        $("#gamepage2").css({
-            "top": 0,
-            "left": 0,
-            "transform": "",
-            "transform-origin": ""
-        })
-    }
-});*/
