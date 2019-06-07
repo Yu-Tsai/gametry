@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var winw;
+    var winh;
     var w;
     var h;
     var nowDeg = 0;
@@ -61,20 +63,24 @@ $(document).ready(function () {
     }
 
     if ($(window).height() >= $(window).width()) {
-        w = $(window).width();
-        h = $(window).height();
+        winw = $(window).width();
+        winh = $(window).height();
     } else {
-        h = $(window).width();
-        w = $(window).height();
+        winh = $(window).width();
+        winw = $(window).height();
     }
-    cirpos = w * 0.3;
 
     $("#gamepage2").css({
         "top": 0,
         "left": 0,
-        "width": w,
-        "height": h
+        "width": winw,
+        "height": winh
     })
+
+    w = $("#gamebase2").width();
+    h = $("#gamebase2").height();
+    cirpos = w * 0.3;
+
     $("#circle").css({
         "left": cirpos,
         "top": cirpos,
@@ -112,18 +118,22 @@ $(document).ready(function () {
                 })
             }
             if ($(window).height() >= $(window).width()) {
-                w = $(window).width();
-                h = $(window).height();
+                winw = $(window).width();
+                winh = $(window).height();
             } else {
-                h = $(window).width();
-                w = $(window).height();
+                winh = $(window).width();
+                winw = $(window).height();
             }
-            cirpos = w * 0.3;
 
             $("#gamepage2").css({
-                "width": w,
-                "height": h
+                "width": winw,
+                "height": winh
             })
+
+            w = $("#gamebase2").width();
+            h = $("#gamebase2").height();
+            cirpos = w * 0.3;
+
             $("#circle").css({
                 "left": cirpos,
                 "top": cirpos,
